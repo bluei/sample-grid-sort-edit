@@ -68,6 +68,7 @@ namespace SampleSortableChildCollectionForm.Extensions
             output.AppendLine(@"</ul>");
         }
 
+        // Change to render table instead
         private static void RenderInitialTableCollection<TModel, TItem>(StringBuilder output, HtmlHelper<TModel> html,
             Func<TModel, IEnumerable<TItem>> collection, string partialViewName, string editorId, ViewDataDictionary viewDataDictionary = null)
         {
@@ -82,7 +83,7 @@ namespace SampleSortableChildCollectionForm.Extensions
             output.AppendLine(@"<thead><tr>");
 
             // first column with drag symbol, last column is for actions
-            output.AppendLine(@"<th>x</th>");
+            output.AppendLine(@"<th></th>");
 
             // get remaining column not annotated with [Display(Order=0)]   in html.ViewData.ModelMetadata.Properties.Where(p => p.Order != 0)
             foreach (var property in properties.Where(p => p.Order != 0))
