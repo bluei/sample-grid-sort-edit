@@ -1,0 +1,27 @@
+﻿@using SampleSortableChildCollectionForm.Extensions;
+
+@model SampleSortableChildCollectionForm.Models.Editors.AddressEditorViewModel
+
+<tr @*style="cursor: move"*@>
+
+    @using (Html.BeginCollectionItem("Addresses"))
+    {
+        <td style="cursor: move">
+            &#8691;
+            @Html.HiddenFor(m => m.Id)
+        </td>
+        <td>
+            @Html.TextBoxFor(m => m.Street, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Street, null, new { @class = "text-danger" })
+        </td>
+        <td>
+            @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.City, null, new { @class = "text-danger" })
+        </td>
+        <td>
+            <input type="button" value="Delete" class="form-control btn btn-sm btn-danger"
+                   onclick="$(this).closest('tr').remove();" />
+        </td>
+    }
+
+</tr>
